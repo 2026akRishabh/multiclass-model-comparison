@@ -14,9 +14,7 @@ the deployed app loads the five saved classifiers and their fitted preprocessing
 
 ## GitHub repository link
 
-[Project repository (placeholder)](https://github.com/YOUR_USERNAME/multiclass-model-comparison)
-
-Replace `YOUR_USERNAME/multiclass-model-comparison` with your actual repository path.
+[Project repository](https://github.com/2026akRishabh/multiclass-model-comparison)
 
 ## Dataset description
 
@@ -192,8 +190,8 @@ previously used for training. Uploaded files are not saved by application code.
 
 See Streamlit's official [deployment instructions](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
 and [dependency guidance](https://docs.streamlit.io/deploy/concepts/dependencies).
-Deployment requires your GitHub/Streamlit account; this repository has not been
-published or deployed by this implementation.
+Deployment requires your GitHub/Streamlit account. The project is published on
+GitHub; deployment to Streamlit Community Cloud is pending.
 
 ## Verification
 
@@ -205,7 +203,10 @@ python -m py_compile app.py ml_core.py train.py
 Tests cover split isolation, training-only scaling, all five models' metrics,
 CSV roundtrips, reordered columns, invalid uploads, missing-class AUC, and saved
 model roundtrips (identical predictions and probabilities, including preprocessing).
-The core was run using the preinstalled environment. Installing Streamlit was
-declined in this session, so browser behavior and the complete dependency install
-remain unverified. `requirements.txt` pins the numeric packages used for core
-validation and allows Streamlit 1.51 or newer within major version 1.
+All six core tests passed in the project virtual environment. Automated Streamlit
+AppTest checks passed with Streamlit 1.67.0 for all five model selections, rendered
+metrics and tables, evaluation with a simulated sample CSV upload, and rejection
+of an invalid CSV. These checks exercise the app without a browser; browser-based
+file selection, downloads and the hosted deployment still require manual checks.
+`requirements.txt` pins the numeric packages used for core validation and allows
+Streamlit 1.51 or newer within major version 1.

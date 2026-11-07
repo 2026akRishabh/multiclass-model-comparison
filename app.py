@@ -73,17 +73,17 @@ with comparison_tab:
     comparison = pd.DataFrame({name: evaluate(model, X_test, y_test)[0]
                                for name, model in models.items()}).T
     comparison.index.name = "Model"
-    st.dataframe(comparison.style.format("{:.4f}", na_rep="N/A"), use_container_width=True)
+    st.dataframe(comparison.style.format("{:.4f}", na_rep="N/A"), width="stretch")
     st.download_button("Download metric comparison", comparison.to_csv(),
                        file_name="model_comparison.csv", mime="text/csv")
 with confusion_tab:
     st.caption("Rows: actual digit. Columns: predicted digit.")
     st.dataframe(matrix.style.background_gradient(cmap="Blues", axis=None),
-                 use_container_width=True)
+                 width="stretch")
 with report_tab:
-    st.dataframe(report.style.format("{:.4f}"), use_container_width=True)
+    st.dataframe(report.style.format("{:.4f}"), width="stretch")
 with data_tab:
     predictions = X_test.assign(target=np.asarray(y_test), prediction=predicted)
-    st.dataframe(predictions, use_container_width=True)
+    st.dataframe(predictions, width="stretch")
     st.download_button("Download predictions", predictions.to_csv(index=False),
                        file_name="predictions.csv", mime="text/csv")
